@@ -1,0 +1,40 @@
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Jogo da Cobra</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>    
+    <audio id="bgMusic" loop>
+        <source src="snake-hissing-6092.mp3" type="audio/mp3">
+        Seu navegador não suporta áudio HTML.
+    </audio>
+    <audio id="gameOverSound">
+        <source src="snake-hissing-6092.mp3" type="audio/mp3">
+        Seu navegador não suporta áudio HTML.
+    </audio>
+    <canvas id="gameCanvas"></canvas>
+    
+    <script src="script.js"></script>
+    <script>
+        function resizeGame() {
+            const canvas = document.getElementById('gameCanvas');
+            // Define o canvas para ocupar a largura e a altura da viewport
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            // Caso já tenha a lógica do jogo carregada, reinicie ou ajuste o jogo aqui
+            if (typeof drawGame === 'function') {
+                drawGame(); // Reinicia o jogo com novas dimensões, se necessário
+            }
+        }
+
+        // Chama resizeGame quando a página carrega e quando a janela é redimensionada
+        window.addEventListener('load', resizeGame);
+        window.addEventListener('resize', resizeGame);
+    </script>
+</body>
+</html>
+
